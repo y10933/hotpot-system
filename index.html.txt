@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>火鍋訂餐系統</title>
+</head>
+
+<body>
+
+<h1>🍲 火鍋訂餐系統</h1>
+
+<h2>主餐</h2>
+<select id="main">
+  <option value="180">沙茶鍋 - 180</option>
+  <option value="200">牛奶鍋 - 200</option>
+  <option value="220">麻辣鍋 - 220</option>
+  <option value="280">海鮮鍋 - 280</option>
+</select>
+
+<h2>副餐</h2>
+<select id="side">
+  <option value="0">白飯 - 0</option>
+  <option value="0">冬粉 - 0</option>
+  <option value="0">王子麵 - 0</option>
+  <option value="10">烏龍麵 - 10</option>
+  <option value="10">雞蛋 - 10</option>
+</select>
+
+<h2>加肉</h2>
+<label><input type="checkbox" value="10" class="meat">豬肉片 +10</label><br>
+<label><input type="checkbox" value="40" class="meat">培根牛 +40</label><br>
+<label><input type="checkbox" value="188" class="meat">松阪豬 +188</label><br>
+
+<br><br>
+
+<button onclick="calc()">結帳</button>
+
+<h2>🧾 訂單結果</h2>
+<p id="result"></p>
+
+<script>
+function calc(){
+    let total = 0;
+
+    let main = document.getElementById("main");
+    total += parseInt(main.value);
+
+    let side = document.getElementById("side");
+    total += parseInt(side.value);
+
+    let meats = document.getElementsByClassName("meat");
+
+    for(let i=0;i<meats.length;i++){
+        if(meats[i].checked){
+            total += parseInt(meats[i].value);
+        }
+    }
+
+    document.getElementById("result").innerHTML =
+        "💰 總金額：" + total;
+}
+</script>
+
+</body>
+</html>
